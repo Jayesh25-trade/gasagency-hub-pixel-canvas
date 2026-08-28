@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { WHATSAPP, inr, scrollToId } from "@/lib/gas";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { DashboardMock } from "./DashboardMock";
-import cylinder from "/pixel-cylinder.png";
 
 const BOOT = "> booting agency.os ...";
 
@@ -145,7 +144,7 @@ export function Hero() {
           >
             <div className="absolute inset-x-10 bottom-10 h-24 rounded-full bg-primary/40 blur-3xl animate-breathe" />
             <img
-              src={cylinder}
+              src="/pixel-cylinder.png"
               alt="Pixel art LPG gas cylinder"
               width={512}
               height={512}
