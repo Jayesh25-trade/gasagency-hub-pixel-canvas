@@ -63,20 +63,11 @@ export function OldWay() {
             {!reduced && (
               <div className="pointer-events-none absolute inset-0 grid grid-cols-12 grid-rows-10">
                 {CELLS.map((i) => (
-                  <motion.span
-                    key={i}
-                    style={{
-                      opacity: useTransform(
-                        p,
-                        [0.6 + (i % 12) * 0.008, 0.72 + (i % 12) * 0.008],
-                        [0, 1],
-                      ),
-                    }}
-                    className="bg-charcoal"
-                  />
+                  <AshCell key={i} progress={p} index={i} />
                 ))}
               </div>
             )}
+
           </motion.div>
 
           <motion.div
