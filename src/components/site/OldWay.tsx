@@ -122,3 +122,18 @@ function PainLine({
     </motion.li>
   );
 }
+
+function AshCell({
+  progress,
+  index,
+}: {
+  progress: ReturnType<typeof useSpring>;
+  index: number;
+}) {
+  const col = index % 12;
+  const row = Math.floor(index / 12);
+  const start = 0.58 + col * 0.008 + row * 0.004;
+  const opacity = useTransform(progress, [start, start + 0.1], [0, 1]);
+  const y = useTransform(progress, [start, start + 0.16], [0, -26]);
+  return <motion.span style={{ opacity, y }} className="bg-charcoal" />;
+}
