@@ -63,20 +63,11 @@ export function OldWay() {
             {!reduced && (
               <div className="pointer-events-none absolute inset-0 grid grid-cols-12 grid-rows-10">
                 {CELLS.map((i) => (
-                  <motion.span
-                    key={i}
-                    style={{
-                      opacity: useTransform(
-                        p,
-                        [0.6 + (i % 12) * 0.008, 0.72 + (i % 12) * 0.008],
-                        [0, 1],
-                      ),
-                    }}
-                    className="bg-charcoal"
-                  />
+                  <AshCell key={i} progress={p} index={i} />
                 ))}
               </div>
             )}
+
           </motion.div>
 
           <motion.div
@@ -130,4 +121,19 @@ function PainLine({
       &gt; {text}
     </motion.li>
   );
+}
+
+function AshCell({
+  progress,
+  index,
+}: {
+  progress: ReturnType<typeof useSpring>;
+  index: number;
+}) {
+  const col = index % 12;
+  const row = Math.floor(index / 12);
+  const start = 0.58 + col * 0.008 + row * 0.004;
+  const opacity = useTransform(progress, [start, start + 0.1], [0, 1]);
+  const y = useTransform(progress, [start, start + 0.16], [0, -26]);
+  return <motion.span style={{ opacity, y }} className="bg-charcoal" />;
 }
